@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسالة برمجية خاصة</title>
+    <title>رسالتي الخاصة</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -23,7 +23,6 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 600px;
             width: 100%;
-            backdrop-filter: blur(10px);
         }
         h1 {
             color: #333;
@@ -41,13 +40,11 @@
             border: 2px solid #dee2e6;
             min-height: 200px;
             text-align: center;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
         .message-text {
             font-size: 1.4em;
             color: #2c3e50;
             margin-bottom: 20px;
-            word-wrap: break-word;
             font-weight: bold;
         }
         .message-image {
@@ -61,244 +58,143 @@
             color: #95a5a6;
             font-size: 1.2em;
             font-style: italic;
-            text-align: center;
             padding: 40px 20px;
             border: 2px dashed #bdc3c7;
             border-radius: 10px;
         }
+        /* الأزرار وحقول الإدخال - تخفى عن الزوار */
         .input-section {
             background-color: #e9ecef;
             border-radius: 15px;
             padding: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #495057;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ced4da;
-            border-radius: 10px;
-            font-size: 1em;
-            margin-bottom: 15px;
-            resize: vertical;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-        textarea:focus {
-            outline: none;
-            border-color: #764ba2;
-            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
-        }
-        .image-url-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ced4da;
-            border-radius: 10px;
-            font-size: 1em;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-        .image-url-input:focus {
-            outline: none;
-            border-color: #764ba2;
-            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
-        }
-        .button-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: white;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        .btn-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
-        }
-        .btn-secondary {
-            background: linear-gradient(135deg, #8e9eab 0%, #eef2f3 100%);
-            color: #2c3e50;
-        }
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(142, 158, 171, 0.4);
-        }
-        .link-info {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 10px;
-            color: #155724;
             display: none;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 0.9em;
         }
-        .link-info.show {
+        .input-section.show {
             display: block;
         }
-        .note {
-            font-size: 0.85em;
-            color: #6c757d;
-            margin-top: 15px;
+        label, textarea, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background: #764ba2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background: #5a3b80;
+        }
+        .owner-note {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             text-align: center;
+            display: none;
+        }
+        .owner-note.show {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>⚡ النظام البرمجي التفاعلي ⚡</h1>
+        <h1>📨 رسالة خاصة</h1>
         
-        <!-- منطقة العرض التي سيراها صديقك -->
-        <div class="display-area" id="displayArea">
-            <div id="displayMessage" class="message-text">👋 مرحباً! لم يتم تعيين رسالة بعد</div>
-            <img id="displayImage" class="message-image" src="" alt="صورة الرسالة" style="display: none;">
-            <div id="placeholderMessage" class="placeholder-message">
-                🖼️ سيتم عرض الصورة هنا عند إضافتها
-            </div>
+        <!-- رسالة للمالك (تظهر فقط لك) -->
+        <div class="owner-note" id="ownerNote">
+            ⭐ أنت المالك - الأزرار ظهرت لك في الأسفل
+        </div>
+        
+        <!-- منطقة العرض (الكل يشوفها) -->
+        <div class="display-area">
+            <div id="displayMessage" class="message-text">👋 مرحباً! لا توجد رسالة بعد</div>
+            <img id="displayImage" class="message-image" src="" style="display: none;">
+            <div id="placeholder" class="placeholder-message">🖼️ لا توجد صورة</div>
         </div>
 
-        <!-- قسم التحكم (هذا القسم يظهر لك فقط) -->
-        <div class="input-section">
-            <label for="messageInput">✏️ اكتب رسالتك:</label>
-            <textarea id="messageInput" rows="3" placeholder="اكتب أي شيء تريد عرضه لصديقك..."></textarea>
+        <!-- قسم التحكم (يظهر للمالك فقط) -->
+        <div class="input-section" id="inputSection">
+            <label>✏️ اكتب رسالتك:</label>
+            <textarea id="messageInput" rows="3"></textarea>
             
-            <label for="imageInput">🔗 رابط الصورة (اختياري):</label>
-            <input type="url" id="imageInput" class="image-url-input" placeholder="https://example.com/image.jpg">
+            <label>🔗 رابط الصورة:</label>
+            <input type="url" id="imageInput" placeholder="https://example.com/image.jpg">
             
-            <div class="button-group">
-                <button class="btn btn-primary" onclick="updateDisplay()">تحديث العرض</button>
-                <button class="btn btn-success" onclick="generateLink()">نسخ رابط المشاركة</button>
-                <button class="btn btn-secondary" onclick="resetDisplay()">إعادة تعيين</button>
-            </div>
-
-            <!-- معلومات الرابط بعد التحديث -->
-            <div class="link-info" id="linkInfo">
-                <strong>✅ الرابط جاهز!</strong><br>
-                <span id="generatedLink"></span><br>
-                <small>انسخ هذا الرابط وأرسله لصديقك</small>
-            </div>
+            <button onclick="saveAndShowLink()">حفظ وإنشاء رابط المشاركة</button>
             
-            <div class="note">
-                💡 ملاحظة: بعد كتابة الرسالة وإضافة الصورة، اضغط على "تحديث العرض" لترى النتيجة، ثم "نسخ رابط المشاركة" لتحصل على الرابط المخصص.
+            <div id="linkBox" style="background: white; padding: 10px; border-radius: 5px; display: none; word-break: break-all;">
+                <strong>✅ الرابط:</strong> <span id="shareLink"></span>
             </div>
         </div>
     </div>
 
     <script>
-        // دالة لتحديث العرض بناءً على المدخلات
-        function updateDisplay() {
-            const message = document.getElementById('messageInput').value;
-            const imageUrl = document.getElementById('imageInput').value;
-            
-            // تحديث النص
-            const displayMessage = document.getElementById('displayMessage');
-            const placeholder = document.getElementById('placeholderMessage');
-            const displayImage = document.getElementById('displayImage');
-            
-            if (message.trim() !== '') {
-                displayMessage.textContent = message;
-            } else {
-                displayMessage.textContent = '👋 مرحباً! لم يتم تعيين رسالة بعد';
-            }
-            
-            // تحديث الصورة
-            if (imageUrl.trim() !== '') {
-                displayImage.src = imageUrl;
-                displayImage.style.display = 'block';
-                placeholder.style.display = 'none';
-            } else {
-                displayImage.style.display = 'none';
-                placeholder.style.display = 'block';
-            }
-            
-            // حفظ البيانات في التخزين المحلي (localStorage) ليتم استرجاعها عند فتح الرابط
-            const dataToSave = {
-                message: message,
-                imageUrl: imageUrl
-            };
-            localStorage.setItem('sharedMessageData', JSON.stringify(dataToSave));
-        }
+        // كلمة السر الخاصة بك (غير الرقم)
+        const MY_SECRET = "1234";
         
-        // دالة لتوليد رابط المشاركة
-        function generateLink() {
-            // أولاً، نقوم بحفظ أحدث البيانات
-            updateDisplay();
-            
-            // الحصول على رابط الصفحة الحالية
-            const currentUrl = window.location.href.split('#')[0].split('?')[0];
-            
-            // إضافة معرف فريد بسيط للرابط (يمكن استخدام أي شيء)
-            const shareUrl = currentUrl + '?share=' + Date.now();
-            
-            // عرض رابط المشاركة
-            document.getElementById('generatedLink').textContent = shareUrl;
-            document.getElementById('linkInfo').classList.add('show');
-            
-            // نسخ الرابط تلقائياً إلى الحافظة
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                alert('✅ تم نسخ الرابط إلى الحافظة!');
-            }).catch(err => {
-                console.error('فشل النسخ: ', err);
-                alert('⚠️ الرابط جاهز ولكن لم نتمكن من نسخه تلقائياً. يمكنك نسخه يدوياً.');
-            });
-        }
-        
-        // دالة لإعادة تعيين كل شيء
-        function resetDisplay() {
-            document.getElementById('messageInput').value = '';
-            document.getElementById('imageInput').value = '';
-            document.getElementById('displayMessage').textContent = '👋 مرحباً! لم يتم تعيين رسالة بعد';
-            document.getElementById('displayImage').style.display = 'none';
-            document.getElementById('placeholderMessage').style.display = 'block';
-            document.getElementById('linkInfo').classList.remove('show');
-            
-            // مسح البيانات المحفوظة
-            localStorage.removeItem('sharedMessageData');
-        }
-        
-        // عند تحميل الصفحة، نتحقق من وجود بيانات محفوظة
+        // عند فتح الصفحة
         window.onload = function() {
-            const savedData = localStorage.getItem('sharedMessageData');
-            if (savedData) {
-                try {
-                    const data = JSON.parse(savedData);
-                    if (data.message) {
-                        document.getElementById('messageInput').value = data.message;
-                    }
-                    if (data.imageUrl) {
-                        document.getElementById('imageInput').value = data.imageUrl;
-                    }
-                    updateDisplay();
-                } catch (e) {
-                    console.error('خطأ في قراءة البيانات المحفوظة');
+            // نشوف إذا الرابط فيه كلمة السر
+            const urlParams = new URLSearchParams(window.location.search);
+            const secret = urlParams.get('s');
+            
+            // لو دخلت بكلمة السر، تظهرلك الأزرار
+            if (secret === MY_SECRET) {
+                document.getElementById('inputSection').classList.add('show');
+                document.getElementById('ownerNote').classList.add('show');
+            }
+            
+            // نشوف إذا فيه رسالة محفوظة
+            const saved = localStorage.getItem('myMessage');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('displayMessage').textContent = data.msg;
+                if (data.img) {
+                    document.getElementById('displayImage').src = data.img;
+                    document.getElementById('displayImage').style.display = 'block';
+                    document.getElementById('placeholder').style.display = 'none';
                 }
             }
         };
+        
+        // حفظ البيانات وإنشاء الرابط
+        function saveAndShowLink() {
+            const msg = document.getElementById('messageInput').value;
+            const img = document.getElementById('imageInput').value;
+            
+            // حفظ في localStorage
+            const data = {msg: msg, img: img};
+            localStorage.setItem('myMessage', JSON.stringify(data));
+            
+            // تحديث العرض
+            document.getElementById('displayMessage').textContent = msg || '👋 مرحباً! لا توجد رسالة بعد';
+            if (img) {
+                document.getElementById('displayImage').src = img;
+                document.getElementById('displayImage').style.display = 'block';
+                document.getElementById('placeholder').style.display = 'none';
+            }
+            
+            // إنشاء رابط المشاركة
+            const baseUrl = window.location.href.split('?')[0];
+            const shareUrl = baseUrl;
+            
+            document.getElementById('shareLink').textContent = shareUrl;
+            document.getElementById('linkBox').style.display = 'block';
+            
+            // نسخ الرابط
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                alert('✅ تم نسخ الرابط! أرسله لصديقك');
+            });
+        }
     </script>
 </body>
 </html>
