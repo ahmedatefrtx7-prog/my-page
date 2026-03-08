@@ -1,200 +1,56 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسالتي الخاصة</title>
+    <title>Tourism in Egypt</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            direction: rtl;
-        }
-        .container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 600px;
-            width: 100%;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-            border-bottom: 3px solid #764ba2;
-            padding-bottom: 10px;
-        }
-        .display-area {
-            background-color: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 2px solid #dee2e6;
-            min-height: 200px;
-            text-align: center;
-        }
-        .message-text {
-            font-size: 1.4em;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .message-image {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            margin-top: 15px;
-        }
-        .placeholder-message {
-            color: #95a5a6;
-            font-size: 1.2em;
-            font-style: italic;
-            padding: 40px 20px;
-            border: 2px dashed #bdc3c7;
-            border-radius: 10px;
-        }
-        /* الأزرار وحقول الإدخال - تخفى عن الزوار */
-        .input-section {
-            background-color: #e9ecef;
-            border-radius: 15px;
-            padding: 20px;
-            display: none;
-        }
-        .input-section.show {
-            display: block;
-        }
-        label, textarea, input, button {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        button {
-            background: #764ba2;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-        button:hover {
-            background: #5a3b80;
-        }
-        .owner-note {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            text-align: center;
-            display: none;
-        }
-        .owner-note.show {
-            display: block;
-        }
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        h1, h2, h3 { text-align: center; }
+        .lang-toggle { text-align: center; margin: 20px; }
     </style>
+    <script>
+        function toggleLanguage() {
+            var englishContent = document.getElementById('english');
+            var arabicContent = document.getElementById('arabic');
+            if (englishContent.style.display === 'none') {
+                englishContent.style.display = 'block';
+                arabicContent.style.display = 'none';
+            } else {
+                englishContent.style.display = 'none';
+                arabicContent.style.display = 'block';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <h1>📨 رسالة خاصة</h1>
-        
-        <!-- رسالة للمالك (تظهر فقط لك) -->
-        <div class="owner-note" id="ownerNote">
-            ⭐ أنت المالك - الأزرار ظهرت لك في الأسفل
+        <div class="lang-toggle">
+            <button onclick="toggleLanguage()">Toggle Language</button>
         </div>
-        
-        <!-- منطقة العرض (الكل يشوفها) -->
-        <div class="display-area">
-            <div id="displayMessage" class="message-text">👋 مرحباً! لا توجد رسالة بعد</div>
-            <img id="displayImage" class="message-image" src="" style="display: none;">
-            <div id="placeholder" class="placeholder-message">🖼️ لا توجد صورة</div>
+        <div id="english">
+            <h1>Welcome to Egypt's Natural Landscapes</h1>
+            <h2>Explore the Beauty of Nature</h2>
+            <p>Egypt is known for its vast deserts, lush oases, and stunning coastlines. Discover the wonders of the White Desert, Siwa Oasis, and the Red Sea resorts.</p>
+            <h3>Top Attractions</h3>
+            <ul>
+                <li>White Desert</li>
+                <li>Siwa Oasis</li>
+                <li>Red Sea Coast</li>
+            </ul>
         </div>
-
-        <!-- قسم التحكم (يظهر للمالك فقط) -->
-        <div class="input-section" id="inputSection">
-            <label>✏️ اكتب رسالتك:</label>
-            <textarea id="messageInput" rows="3"></textarea>
-            
-            <label>🔗 رابط الصورة:</label>
-            <input type="url" id="imageInput" placeholder="https://example.com/image.jpg">
-            
-            <button onclick="saveAndShowLink()">حفظ وإنشاء رابط المشاركة</button>
-            
-            <div id="linkBox" style="background: white; padding: 10px; border-radius: 5px; display: none; word-break: break-all;">
-                <strong>✅ الرابط:</strong> <span id="shareLink"></span>
-            </div>
+        <div id="arabic" style="display: none;">
+            <h1>أهلاً بكم في المناظر الطبيعية في مصر</h1>
+            <h2>استكشف جمال الطبيعة</h2>
+            <p>تشتهر مصر بصحاريها الشاسعة وواحاتها الخضراء والسواحل الخلابة. اكتشف عجائب الصحراء البيضاء وواحة سيوة ومنتجعات البحر الأحمر.</p>
+            <h3>أهم المعالم السياحية</h3>
+            <ul>
+                <li>الصحراء البيضاء</li>
+                <li>واحة سيوة</li>
+                <li>ساحل البحر الأحمر</li>
+            </ul>
         </div>
     </div>
-
-    <script>
-        // كلمة السر الخاصة بك (غير الرقم)
-        const MY_SECRET = "1234";
-        
-        // عند فتح الصفحة
-        window.onload = function() {
-            // نشوف إذا الرابط فيه كلمة السر
-            const urlParams = new URLSearchParams(window.location.search);
-            const secret = urlParams.get('s');
-            
-            // لو دخلت بكلمة السر، تظهرلك الأزرار
-            if (secret === MY_SECRET) {
-                document.getElementById('inputSection').classList.add('show');
-                document.getElementById('ownerNote').classList.add('show');
-            }
-            
-            // نشوف إذا فيه رسالة محفوظة
-            const saved = localStorage.getItem('myMessage');
-            if (saved) {
-                const data = JSON.parse(saved);
-                document.getElementById('displayMessage').textContent = data.msg;
-                if (data.img) {
-                    document.getElementById('displayImage').src = data.img;
-                    document.getElementById('displayImage').style.display = 'block';
-                    document.getElementById('placeholder').style.display = 'none';
-                }
-            }
-        };
-        
-        // حفظ البيانات وإنشاء الرابط
-        function saveAndShowLink() {
-            const msg = document.getElementById('messageInput').value;
-            const img = document.getElementById('imageInput').value;
-            
-            // حفظ في localStorage
-            const data = {msg: msg, img: img};
-            localStorage.setItem('myMessage', JSON.stringify(data));
-            
-            // تحديث العرض
-            document.getElementById('displayMessage').textContent = msg || '👋 مرحباً! لا توجد رسالة بعد';
-            if (img) {
-                document.getElementById('displayImage').src = img;
-                document.getElementById('displayImage').style.display = 'block';
-                document.getElementById('placeholder').style.display = 'none';
-            }
-            
-            // إنشاء رابط المشاركة
-            const baseUrl = window.location.href.split('?')[0];
-            const shareUrl = baseUrl;
-            
-            document.getElementById('shareLink').textContent = shareUrl;
-            document.getElementById('linkBox').style.display = 'block';
-            
-            // نسخ الرابط
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                alert('✅ تم نسخ الرابط! أرسله لصديقك');
-            });
-        }
-    </script>
 </body>
 </html>
